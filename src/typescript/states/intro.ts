@@ -24,25 +24,22 @@ module PhaserSkeleton.States {
             var textStyle2: any = {font: '20px Arial', fill: '#fff', align: 'center'};
             var textGroup: string[] = [
                 // Style 1
-                '\"Papai! Papai!? O que aconteceu?\"',
+                '\"Papai! Mamãe!? O que aconteceu?\"',
                 '\"Calma, filho. Vai ficar tudo bem...\"',
                 '\"Existem possibilidades, seu filho pode ter uma vida normal.\"',
-                '\"Respire fundo, filho. Tudo vai dar certo, nós somos uma família!\"',
+                '\"Tudo vai dar certo. Nós somos uma família!\"',
                 // Style 2
                 'As vezes é preciso entender que as coisas mudam...',
                 'Nossas vidas e nossa rotina.',
-                'Porém aquilo que realmente importa, isto permanece...',
-                'Mesmo que em alguns momentos',
-                'Não seja possível compreender...',
+                'Mesmo que em alguns momentos\nnão seja possível compreender...',
                 'Aquilo que nos torna único ficará sempre guardado...',
                 'Em nosso coração.',
-                'É preciso encarar cada novo desafio...',
-                'Cada novo obstáculo...',
+                'É preciso encarar cada novo desafio... \nCada novo obstáculo...',
                 'E criar um novo ritual...',
-                'Diário',
-                'Constante',
-                'Em busca da felicidade...',
-                'Através da superação.'
+                'Diário e constante',
+                'Que nos ajude a superar os momentos de dificuldade...',
+                'Sempre em busca da felicidade...',
+                'Além da superação.'
             ];
 
             for (var i = 0; i < textGroup.length; i++) {
