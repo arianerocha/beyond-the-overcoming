@@ -19,6 +19,7 @@ module PhaserSkeleton.States {
             this.load.image('greenSnail', 'assets/sprites/green-snail.png');
             this.load.image('player', 'assets/sprites/player.png');
             this.load.image('redSnail', 'assets/sprites/red-snail.png');
+            this.load.image('level1', 'assets/maps/map1.jpg');
 
             // LOAD spritesheet
             this.load.spritesheet('littleDude', 'assets/sprites/player.png', 32, 32, 1);

@@ -4,6 +4,9 @@ module PhaserSkeleton.States {
     export class Intro extends Phaser.State {
 
         tweenChain: Array<Phaser.Tween> = [];
+        textStyle1: any = { font: '18px Arial', fill: '#fff', align: 'center' };
+        textStyle2: any = { font: '20px Arial', fill: '#fff', align: 'center' };
+        music: Phaser.Sound;
 
         protected createText(text: string, x: number, y: number, style: any) {
             var _text = this.game.add.text(
@@ -16,11 +19,9 @@ module PhaserSkeleton.States {
         }
 
         create() {
-            var music = this.game.add.audio('intro');
-            music.play();
+            this.music = this.game.add.audio('intro');
+            this.music.play();
 
-            var textStyle1: any = {font: '18px Arial', fill: '#fff', align: 'center'};
-            var textStyle2: any = {font: '20px Arial', fill: '#fff', align: 'center'};
             var textGroup: string[] = [
                 // Style 1
                 '\"Papai! Mamãe!? O que aconteceu?\"',
@@ -46,7 +47,7 @@ module PhaserSkeleton.States {
                     textGroup[i],
                     this.game.world.centerX,
                     this.game.world.centerY,
-                    (i <= 3) ? textStyle1 : textStyle2
+                    (i <= 3) ? this.textStyle1 : this.textStyle2
                 );
 
                 var tween = this.game.add.tween(text)
@@ -62,39 +63,24 @@ module PhaserSkeleton.States {
                 }
                 this.tweenChain.push(tween);
             }
-
+            
             this.game.time.events.add(2000, this.start, this);
         }
 
         start() {
             this.tweenChain[0].start();
-            // console.log('Introduction');
-            // var text = this.game.add.text(
-            //         200,
-            //         550,
-            //         " Press ENTER to skip the introduction. ",
-            //         {
-            //             font: "18px Arial",
-            //             fill: "#fff",
-            //             align: "center"
-            //         });
+            var textSkipIntro = " Press ENTER to skip the introduction. ";
+            var text = this.game.add.text(200, 560, textSkipIntro, this.textStyle1);
+            text.anchor.set(0.5);
 
-            // text.anchor.set(0.5);
         }
         update() {
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
-                this.skipIntroduction();
+                this.tweenChain = [];
+                this.music.stop();
+                this.game.state.start('LevelInitial');
             }
         }
-        addAnimation(){
-            var playerMove = this.game.add.sprite(300, 200, 'mummy');
-
-
-        }
-        skipIntroduction() {
-            this.game.state.start('Menu');
-        }
-
     }
 
 }
