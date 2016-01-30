@@ -15,7 +15,7 @@ module PhaserSkeleton {
 
             this.state.add('Bootstrap', States.Bootstrap, false);
             this.state.add('Preloader', States.Preloader, false);
-            this.state.add('MainMenu', States.MainMenu, false);
+            this.state.add('Menu', States.Menu, false);
 
             this.state.start('Bootstrap');
         }

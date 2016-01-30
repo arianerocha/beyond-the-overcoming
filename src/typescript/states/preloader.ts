@@ -16,7 +16,10 @@ module PhaserSkeleton.States {
 
 		loadGameAssets() {
 			// Load your game loadGameAssets
-			// this.load.image('', '');
+			this.load.image('bolt', 'assets/sprites/bolt.png');
+			this.load.image('greenSnail', 'assets/sprites/green-snail.png');
+			this.load.image('player', 'assets/sprites/player.png');
+			this.load.image('redSnail', 'assets/sprites/red-snail.png');
 		}
 
 		create() {
@@ -25,7 +28,7 @@ module PhaserSkeleton.States {
 		}
 
 		startMainMenu() {
-			this.game.state.start('MainMenu', true, false);
+			this.game.state.start('Menu', true, false);
 		}
 
 	}
