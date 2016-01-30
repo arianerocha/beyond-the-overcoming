@@ -8,7 +8,10 @@
     "start": "http-server dist/"
   },
   "author": [
-    {"name": "Ricardo Lüders", "email": "ricardo@luders.com.br"}
+    {
+      "name": "Ricardo Lüders",
+      "email": "ricardo@luders.com.br"
+    }
   ],
   "license": "MIT",
   "devDependencies": {

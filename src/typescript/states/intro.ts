@@ -16,7 +16,6 @@ module PhaserSkeleton.States {
         }
 
         create() {
-
             var music = this.game.add.audio('intro');
             music.play();
 
@@ -69,6 +68,31 @@ module PhaserSkeleton.States {
 
         start() {
             this.tweenChain[0].start();
+            // console.log('Introduction');
+            // var text = this.game.add.text(
+            //         200,
+            //         550,
+            //         " Press ENTER to skip the introduction. ",
+            //         {
+            //             font: "18px Arial",
+            //             fill: "#fff",
+            //             align: "center"
+            //         });
+
+            // text.anchor.set(0.5);
+        }
+        update() {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+                this.skipIntroduction();
+            }
+        }
+        addAnimation(){
+            var playerMove = this.game.add.sprite(300, 200, 'mummy');
+
+
+        }
+        skipIntroduction() {
+            this.game.state.start('Menu');
         }
 
     }
