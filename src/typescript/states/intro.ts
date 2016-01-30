@@ -4,6 +4,7 @@ module PhaserSkeleton.States {
     export class Intro extends Phaser.State {
 
         tweenChain: Array<Phaser.Tween> = [];
+        music: Phaser.Audio;
 
         protected createText(text: string, x: number, y: number, style: any) {
             var _text = this.game.add.text(
@@ -16,13 +17,20 @@ module PhaserSkeleton.States {
         }
 
         create() {
+            var skipText: Phaser.Text = this.game.add.text(
+                5,
+                5,
+                'Press ESC to skip...',
+                {font: '12px Arial', fill: '#f4f4f4', align: 'left'}
+            );
+            skipText.anchor.set(0);
 
-            var music = this.game.add.audio('intro');
-            music.play();
+            this.music = this.game.add.audio('intro');
+            this.music.play();
 
-            var textStyle1: any = {font: '18px Arial', fill: '#fff', align: 'center'};
-            var textStyle2: any = {font: '20px Arial', fill: '#fff', align: 'center'};
-            var textGroup: string[] = [
+            var textStyle1 = {font: '18px Arial', fill: '#fff', align: 'center'};
+            var textStyle2 = {font: '20px Arial', fill: '#fff', align: 'center'};
+            var textGroup = [
                 // Style 1
                 '\"Papai! Mamãe!? O que aconteceu?\"',
                 '\"Calma, filho. Vai ficar tudo bem...\"',
@@ -51,8 +59,8 @@ module PhaserSkeleton.States {
                 );
 
                 var tween = this.game.add.tween(text)
-                                        .to({alpha: 1}, 2000, Phaser.Easing.Linear.None, false)
-                                        .to({alpha: 0}, (i == 3 ? 4000 : 3000), Phaser.Easing.Linear.None, false);
+                                        .to({alpha: 1}, 1500, Phaser.Easing.Linear.None, false)
+                                        .to({alpha: 0}, (i == 3 ? 3000 : 2000), Phaser.Easing.Linear.None, false);
                 if (i > 0) {
                     this.tweenChain[i - 1].chain(tween);
                 }
@@ -73,15 +81,19 @@ module PhaserSkeleton.States {
                 logo.anchor.set(0.5);
 
                 var tween = this.game.add.tween(logo).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true);
-                if (this.game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
-                    this.startGame();
-                }
             }, this);
             this.tweenChain[0].start();
         }
 
+        update() {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
+                this.startGame();
+            }
+        }
+
         startGame() {
-            this.game.state.start('level');
+            this.music.stop();
+            this.game.state.start('Level01');
         }
 
     }

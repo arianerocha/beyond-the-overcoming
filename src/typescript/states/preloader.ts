@@ -20,9 +20,13 @@ module PhaserSkeleton.States {
             this.load.image('player', 'assets/sprites/player.png');
             this.load.image('redSnail', 'assets/sprites/red-snail.png');
             this.load.image('logo', 'assets/ui/logo.png');
+            this.load.image('grass', 'assets/tilesets/grass.png');
+            this.load.image('watergrass', 'assets/tilesets/watergrass.png');
 
             // @todo convert audios to ogg
             this.load.audio('intro', ['assets/musics/intro.mp3']);
+
+            this.game.load.tilemap('level01', 'assets/maps/level01.json', null, Phaser.Tilemap.TILED_JSON);
         }
 
         create() {
