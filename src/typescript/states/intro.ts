@@ -34,7 +34,7 @@ module PhaserSkeleton.States {
                 'Mesmo que em alguns momentos\nnão seja possível compreender...',
                 'Aquilo que nos torna único ficará sempre guardado...',
                 'Em nosso coração.',
-                'É preciso encarar cada novo desafio... \nCada novo obstáculo...',
+                'É preciso encarar cada desafio... \nCada novo obstáculo...',
                 'E criar um novo ritual...',
                 'Diário e constante',
                 'Que nos ajude a superar os momentos de dificuldade...',
@@ -53,11 +53,6 @@ module PhaserSkeleton.States {
                 var tween = this.game.add.tween(text)
                                         .to({alpha: 1}, 2000, Phaser.Easing.Linear.None, false)
                                         .to({alpha: 0}, (i == 3 ? 4000 : 3000), Phaser.Easing.Linear.None, false);
-                if (i == textGroup.length) {
-                    tween.onComplete.add(function() {
-                        console.log('Load level');
-                    }, this);
-                }
                 if (i > 0) {
                     this.tweenChain[i - 1].chain(tween);
                 }
@@ -68,7 +63,25 @@ module PhaserSkeleton.States {
         }
 
         start() {
+            this.tweenChain[this.tweenChain.length-1].onComplete.add(function() {
+                var logo = this.game.add.sprite(
+                    this.game.world.centerX,
+                    200,
+                    'logo'
+                );
+                logo.alpha = 0;
+                logo.anchor.set(0.5);
+
+                var tween = this.game.add.tween(logo).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true);
+                if (this.game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+                    this.startGame();
+                }
+            }, this);
             this.tweenChain[0].start();
+        }
+
+        startGame() {
+            this.game.state.start('level');
         }
 
     }

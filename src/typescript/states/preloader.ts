@@ -19,6 +19,7 @@ module PhaserSkeleton.States {
             this.load.image('greenSnail', 'assets/sprites/green-snail.png');
             this.load.image('player', 'assets/sprites/player.png');
             this.load.image('redSnail', 'assets/sprites/red-snail.png');
+            this.load.image('logo', 'assets/ui/logo.png');
 
             // @todo convert audios to ogg
             this.load.audio('intro', ['assets/musics/intro.mp3']);
